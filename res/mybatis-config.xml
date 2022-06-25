@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties resource="db.properties" />
+
+	<settings>
+		<!-- DB컬럼명을 낙타표기법으로 속성명과 자동매핑하도록 설정하기 -->
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+		<setting name="logImpl" value="LOG4J"/>
+	</settings>
+
+<typeAliases>
+	<typeAlias type="kr.or.ddit.member.vo.MemberVO" alias="memVO"/>
+
+</typeAliases>
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${user}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+
+	</environments>
+
+	<mappers>
+		<mapper resource="kr/or/ddit/basic/memberTest.xml"/> 
+		<mapper resource="mapper/member.xml" />
+		<mapper resource="mapper/member2.xml" />
+
+	</mappers>
+
+
+
+</configuration>
